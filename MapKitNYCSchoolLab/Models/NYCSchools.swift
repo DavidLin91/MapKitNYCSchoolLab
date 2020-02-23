@@ -7,20 +7,44 @@
 //
 
 import Foundation
+import MapKit
 
 struct NYCPublicSchool: Codable {
     let schools: [AllSchools]
 }
 
 struct AllSchools: Codable {
-    let school_name: String
+    let schoolName: String
     let neighborhood: String
-    let phone_number: String
-    let school_email: String
+    let phoneNumber: String
+    let schoolEmail: String
     let city: String
     let zip: String
-    let state_code: String
+    let stateCode: String
     let borough: String
     let latitude: String
     let longitude: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case schoolName = "school_name"
+        case neighborhood
+        case phoneNumber = "phone_number"
+        case schoolEmail = "school_email"
+        case city
+        case zip
+        case stateCode = "state_code"
+        case borough
+        case latitude
+        case longitude
+    }
+    
+    static func getLocations() -> CLLocationCoordinate2D {
+        var allSchools: AllSchools!
+        
+        let latitude: CLLocationDegrees = Double(allSchools!.latitude)!
+        let longitude: CLLocationDegrees = Double(allSchools!.longitude)!
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return coordinates
+    }
+    
 }
