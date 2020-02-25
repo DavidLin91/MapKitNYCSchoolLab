@@ -9,10 +9,6 @@
 import Foundation
 import MapKit
 
-struct NYCPublicSchool: Codable {
-    let schools: [AllSchools]
-}
-
 struct AllSchools: Codable {
     let schoolName: String
     let neighborhood: String
@@ -36,15 +32,6 @@ struct AllSchools: Codable {
         case borough
         case latitude
         case longitude
-    }
-    
-    static func getLocations() -> CLLocationCoordinate2D {
-        var allSchools: AllSchools!
-        
-        let latitude: CLLocationDegrees = Double(allSchools!.latitude)!
-        let longitude: CLLocationDegrees = Double(allSchools!.longitude)!
-        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        return coordinates
     }
     
 }

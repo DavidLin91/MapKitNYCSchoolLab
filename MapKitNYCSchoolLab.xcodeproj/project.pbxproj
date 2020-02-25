@@ -109,8 +109,6 @@
 		63E6BDC02401E58D00023030 /* Supporting FIles */ = {
 			isa = PBXGroup;
 			children = (
-				63E6BDA42401E19D00023030 /* Main.storyboard */,
-				63E6BDA92401E1A300023030 /* LaunchScreen.storyboard */,
 				63E6BD9E2401E19D00023030 /* AppDelegate.swift */,
 				63E6BDA02401E19D00023030 /* SceneDelegate.swift */,
 				63E6BDA72401E1A300023030 /* Assets.xcassets */,
@@ -138,6 +136,8 @@
 		63E6BDC52401E63000023030 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63E6BDA42401E19D00023030 /* Main.storyboard */,
+				63E6BDA92401E1A300023030 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";

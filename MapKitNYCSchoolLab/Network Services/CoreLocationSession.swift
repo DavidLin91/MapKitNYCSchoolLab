@@ -14,30 +14,15 @@ class CoreLocationSession: NSObject {
     
     public var locationManager: CLLocationManager
     
-    
-   override init() {
+    override init() {
         locationManager = CLLocationManager()
         super.init()
         locationManager.delegate = self
-    
+        
         // request the user's location
-    locationManager.requestAlwaysAuthorization()
-    locationManager.requestWhenInUseAuthorization()
-    
-    // the following keys need ot be added to the info.plist file
-    /*
-     NSLocationAlwaysAndWhenInUseUsageDescription
-     NSLOcationWhenInUseageDescription
-     */
-    
-    // more agressive solution to GPS data collection
-    // locationManager.startUpdatingLocation()
-    
-    // get updates for user location (less agressive on batter consumption and GPS data colleciton)
-    startSignificantLocationChanges()
-    
-    
-    startMonitoringRegion()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        startSignificantLocationChanges()
     }
     
     // only updates location if there are significant changes
@@ -80,24 +65,10 @@ class CoreLocationSession: NSObject {
             }
             if let firstPlacemark = placemarks?.first,
                 let location = firstPlacemark.location {
-                    print("place name coordinate is \(location.coordinate)")
-                }
+                print("place name coordinate is \(location.coordinate)")
             }
         }
-
-    
-    // monitor a CLRegion
-    // CLRegion is made up of a center coordinate and a radius in meters
-    private func startMonitoringRegion() {
-        let location = AllSchools.getLocations() // central park
-        let identifier = "monitoring region"
-        let region = CLCircularRegion(center: location, radius: 500, identifier: identifier)
-        region.notifyOnEntry = true
-        region.notifyOnExit = false
-        locationManager.startMonitoring(for: region)
     }
-    
-    
 }
 
 
